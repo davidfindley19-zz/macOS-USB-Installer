@@ -3,6 +3,7 @@
 # Purpose: Create macOS bootable USB media
 # Date: February 10, 2017
 # Author: David Findley
+#Updated October 31, 2017 - Added missing Sierra install command. Will update for High Sierra soon.
 
 # Checking for root user privileges
 
@@ -37,7 +38,7 @@ function input()
 	case $selection in
 		1) yosemite ;;
 		2) el_capitan ;;
-		3) three ;;
+		3) sierra ;;
 		4) exit 0 ;;
 	
 	esac
@@ -59,6 +60,14 @@ function el_capitan()
 	/Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/$drive --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app
 	sleep 2
 }
+
+function sierra()
+{
+	echo "Creating macOS Sierra Installer: "
+	read -p "Please enter the name of the USB drive: " drive
+	/Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/$drive --applicationpath /Applications/Install\ macOS\ Sierra.app
+	sleep 2
+}	
 
 while true
 do
